@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MeetPlan Dashboard
 
-## Getting Started
+MeetPlan is a meeting dashboard built as part of a frontend/full-stack development assignment.
 
-First, run the development server:
+The dashboard allows users to connect their Google Calendar and view their upcoming meetings directly inside the application.
+
+## Live Demo
+
+https://meeting-dashboard-sigma.vercel.app/
+
+## GitHub Repository
+
+https://github.com/Nex-Summet/meeting-dashboard
+
+## What I Built
+
+* Meeting dashboard with responsive UI
+* Google login using NextAuth.js
+* Connect Google Calendar option
+* Google Calendar API integration
+* Upcoming Google Calendar events displayed on the dashboard
+* Calendar section with today's schedule
+* Dashboard statistics cards
+* Responsive layout for desktop, tablet and mobile
+* Reusable React components
+
+## Technologies Used
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* NextAuth.js
+* Google Calendar API
+* Google OAuth
+* Lucide React
+
+## Main Pages / Components
+
+The main dashboard contains:
+
+* Sidebar navigation
+* Header with search and profile section
+* Welcome section
+* Statistics cards
+* Upcoming meetings
+* Calendar
+* Google Calendar connection button
+
+## Google Calendar Integration
+
+The Google Calendar integration works through Google OAuth.
+
+After clicking **Connect Google Calendar**, the user signs in with Google and gives calendar permission. The application then uses the Google Calendar API to get upcoming events and displays them in the **Upcoming Meetings** section.
+
+## Run Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Nex-Summet/meeting-dashboard.git
+cd meeting-dashboard
+```
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env.local` file in the project root:
+
+```env
+AUTH_SECRET=your_auth_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Google OAuth Setup
 
-## Learn More
+For Google Calendar integration, a Google Cloud project with the Google Calendar API enabled is required.
 
-To learn more about Next.js, take a look at the following resources:
+For local development, use:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+http://localhost:3000/api/auth/callback/google
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For production, add the Vercel callback URL in the Google OAuth client's authorized redirect URIs.
 
-## Deploy on Vercel
+## Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable               | Purpose                             |
+| ---------------------- | ----------------------------------- |
+| `AUTH_SECRET`          | Used by NextAuth for authentication |
+| `GOOGLE_CLIENT_ID`     | Google OAuth client ID              |
+| `GOOGLE_CLIENT_SECRET` | Google OAuth client secret          |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Keep these values private and do not commit `.env.local` to the repository.
+
+## Project Structure
+
+```text
+meeting-dashboard/
+├── app/
+│   ├── api/
+│   │   ├── auth/
+│   │   └── calendar/
+│   └── page.tsx
+├── components/
+│   ├── CalendarCard.tsx
+│   ├── ConnectCalendarButton.tsx
+│   ├── Header.tsx
+│   ├── Sidebar.tsx
+│   ├── StatsCards.tsx
+│   ├── UpcomingMeetings.tsx
+│   └── WelcomeSection.tsx
+├── types/
+│   └── next-auth.d.ts
+├── package.json
+└── README.md
+
+
+ Author
+
+Sumeet Kannoji
+
+Full Stack Developer
