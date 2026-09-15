@@ -3,32 +3,33 @@ import {
   Clock3,
   Users,
   Video,
+  IndianRupee,
 } from "lucide-react";
 
 const stats = [
   {
     title: "Upcoming Meetings",
     value: "12",
-    description: "Today",
+    change: "↑ 12% vs yesterday",
     icon: CalendarDays,
   },
   {
     title: "Pending Requests",
     value: "4",
-    description: "Need your response",
+    change: "↑ 8% vs yesterday",
     icon: Clock3,
   },
   {
     title: "Hours Booked",
     value: "8.5h",
-    description: "This week",
+    change: "↑ 15% vs yesterday",
     icon: Video,
   },
   {
-    title: "Total Meetings",
-    value: "24",
-    description: "This month",
-    icon: Users,
+    title: "Revenue",
+    value: "₹24,680",
+    change: "↑ 10% vs yesterday",
+    icon: IndianRupee,
   },
 ];
 
@@ -53,8 +54,8 @@ export default function StatsCards() {
                   {stat.value}
                 </p>
 
-                <p className="mt-1 text-xs text-gray-400">
-                  {stat.description}
+                <p className="mt-2 text-xs font-medium text-green-600">
+                  {stat.change}
                 </p>
               </div>
 

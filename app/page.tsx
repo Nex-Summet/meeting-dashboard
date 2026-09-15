@@ -4,6 +4,7 @@ import WelcomeSection from "@/components/WelcomeSection";
 import StatsCards from "@/components/StatsCards";
 import UpcomingMeetings from "@/components/UpcomingMeetings";
 import CalendarCard from "@/components/CalendarCard";
+import MeetingTypes from "@/components/MeetingTypes";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
 
   <CalendarCard />
 </div>
+<MeetingTypes />
           </main>
         </div>
       </div>

@@ -29,35 +29,45 @@ const calendarDays = [
 export default function CalendarCard() {
   return (
     <section className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-      {/* Header */}
       <div className="mb-5 flex items-center justify-between">
-        <h2 className="text-lg font-bold text-gray-900">September 2026</h2>
+        <h2 className="text-lg font-bold text-gray-900">
+          September 2026
+        </h2>
 
         <div className="flex items-center gap-1">
-          <button className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-100">
+          <button
+            type="button"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-100"
+          >
             <ChevronLeft size={16} />
           </button>
-          <button className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-100">
+
+          <button
+            type="button"
+            className="rounded-lg p-1.5 text-gray-500 hover:bg-gray-100"
+          >
             <ChevronRight size={16} />
           </button>
         </div>
       </div>
 
-      {/* Days of week */}
       <div className="mb-2 grid grid-cols-7 gap-1 text-center">
-        {daysOfWeek.map((day, i) => (
-          <span key={i} className="text-xs font-medium text-gray-400">
+        {daysOfWeek.map((day, index) => (
+          <span
+            key={index}
+            className="text-xs font-medium text-gray-400"
+          >
             {day}
           </span>
         ))}
       </div>
 
-      {/* Dates */}
       <div className="grid grid-cols-7 gap-1 text-center">
-        {calendarDays.map((day, i) => (
+        {calendarDays.map((day, index) => (
           <button
-            key={i}
-            className={`flex h-8 w-8 items-center justify-center rounded-lg text-sm mx-auto ${
+            key={index}
+            type="button"
+            className={`mx-auto flex h-8 w-8 items-center justify-center rounded-lg text-sm ${
               day.today
                 ? "bg-gray-900 font-semibold text-white"
                 : day.currentMonth
@@ -70,10 +80,15 @@ export default function CalendarCard() {
         ))}
       </div>
 
-      {/* Divider */}
+      <button
+        type="button"
+        className="mt-4 w-full text-center text-sm font-semibold text-gray-700 hover:text-gray-900"
+      >
+        View full calendar
+      </button>
+
       <div className="my-5 border-t border-gray-100" />
 
-      {/* Today's schedule */}
       <div>
         <h3 className="mb-3 text-sm font-semibold text-gray-900">
           Today&apos;s Schedule
@@ -81,25 +96,46 @@ export default function CalendarCard() {
 
         <div className="space-y-3">
           <div className="flex items-start gap-2">
-            <Circle size={8} className="mt-1.5 fill-gray-900 text-gray-900" />
+            <Circle
+              size={8}
+              className="mt-1.5 fill-gray-900 text-gray-900"
+            />
+
             <div>
               <p className="text-sm font-medium text-gray-800">
                 Product Design Review
               </p>
-              <p className="text-xs text-gray-400">10:00 AM</p>
+
+              <p className="text-xs text-gray-400">
+                10:00 AM
+              </p>
             </div>
           </div>
 
           <div className="flex items-start gap-2">
-            <Circle size={8} className="mt-1.5 fill-gray-900 text-gray-900" />
+            <Circle
+              size={8}
+              className="mt-1.5 fill-gray-900 text-gray-900"
+            />
+
             <div>
               <p className="text-sm font-medium text-gray-800">
                 Client Meeting
               </p>
-              <p className="text-xs text-gray-400">2:00 PM</p>
+
+              <p className="text-xs text-gray-400">
+                2:00 PM
+              </p>
             </div>
           </div>
         </div>
+
+        <button
+          type="button"
+          className="mt-5 flex w-full items-center justify-center rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800"
+        >
+          + New Meeting
+        </button>
       </div>
     </section>
   );

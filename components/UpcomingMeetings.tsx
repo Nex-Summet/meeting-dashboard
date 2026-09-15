@@ -12,6 +12,8 @@ type CalendarEvent = {
   };
 };
 
+const avatars = ["SK", "JD", "AK"];
+
 export default function UpcomingMeetings() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -42,6 +44,7 @@ export default function UpcomingMeetings() {
           <h2 className="text-lg font-bold text-gray-900">
             Upcoming Meetings
           </h2>
+
           <p className="mt-1 text-sm text-gray-500">
             Your scheduled meetings from Google Calendar
           </p>
@@ -62,18 +65,18 @@ export default function UpcomingMeetings() {
         </p>
       ) : (
         <div className="divide-y divide-gray-100">
-          {events.map((event) => {
+          {events.map((event, index) => {
             const start = event.start?.dateTime
               ? new Date(event.start.dateTime)
               : null;
 
             const time = start
-  ? start.toLocaleTimeString("en-IN", {
-      hour: "2-digit",
-      minute: "2-digit",
-      timeZone: "Asia/Kolkata",
-    })
-  : "All day";
+              ? start.toLocaleTimeString("en-IN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  timeZone: "Asia/Kolkata",
+                })
+              : "All day";
 
             return (
               <div
@@ -90,18 +93,29 @@ export default function UpcomingMeetings() {
                       {event.summary || "Untitled Meeting"}
                     </h3>
 
-                    <p className="mt-1 text-xs text-gray-500">
-                      Google Calendar
-                    </p>
+                    <div className="mt-2 flex items-center">
+                      {avatars.map((avatar, avatarIndex) => (
+                        <div
+                          key={avatarIndex}
+                          className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-gray-200 text-[10px] font-semibold text-gray-700 ${
+                            avatarIndex > 0 ? "-ml-2" : ""
+                          }`}
+                        >
+                          {avatar}
+                        </div>
+                      ))}
+
+                      <span className="ml-2 text-xs text-gray-500">
+                        Google Calendar
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-5">
-                  <div>
-                    <div className="flex items-center gap-1.5 text-sm font-medium text-gray-700">
-                      <Clock3 size={15} />
-                      {time}
-                    </div>
+                  <div className="flex items-center gap-1.5 text-sm font-medium text-gray-700">
+                    <Clock3 size={15} />
+                    {time}
                   </div>
 
                   <span className="hidden rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 sm:inline-flex">
